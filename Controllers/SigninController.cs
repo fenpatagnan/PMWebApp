@@ -16,7 +16,7 @@ namespace PMWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(LoginForm LoginInstance)
+        public ActionResult Index(SigninViewModel LoginInstance)
         {
             if (!ModelState.IsValid)
             {

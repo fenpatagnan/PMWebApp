@@ -6,7 +6,7 @@ using System.Web;
 
 namespace PMWebApp.Models.InputModel
 {
-    public class LoginForm
+    public class SigninViewModel
     {
        
         [Required]
