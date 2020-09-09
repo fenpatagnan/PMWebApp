@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using PMWebApp.Models.Entities;
+using PMWebApp.Models.InputModel;
 
 namespace PMWebApp.Facade
 {
@@ -31,21 +32,28 @@ namespace PMWebApp.Facade
             
         }
 
-        public bool AddNewProject()
+        public bool CreateTheProject(CreateOrUpdateProjectInputModel projectInput)
         {
+            
             db.Projects.Add(
                 new Project()
                 {
-                    CodeValue = "PRJ0001",
-                    Name = "Sample Project",
-                    Remarks = "my remarks",
-                    Budget = 1000m,
+                    CodeValue = "PRJ0002",
+                    Name = projectInput.projectName,
+                    Remarks = projectInput.projectRemarks,
+                    Budget = projectInput.projectBudget,
                     IsActive = true
                 });
 
 
             db.SaveChanges();
             return true;
+        }
+
+        public static string GenerateProjectCode()
+        {
+            string projectCode = "2wqe";
+            return projectCode;
         }
     }
 }

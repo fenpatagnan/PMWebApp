@@ -1,4 +1,5 @@
 ﻿using PMWebApp.Facade;
+using PMWebApp.Models.InputModel;
 using PMWebApp.Models.OutputModel;
 using System;
 using System.Collections.Generic;
@@ -19,11 +20,18 @@ namespace PMWebApp.Controllers
             return View(ProjectService.ListProjects());
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
-            // var ProjectService = new ProjectService();
-            // ProjectService.AddNewProject();
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(CreateOrUpdateProjectInputModel projectInput)
+        {
+            var ProjectService = new ProjectService();
+            ProjectService.CreateTheProject(projectInput);
+            return View("Index");
         }
 
 

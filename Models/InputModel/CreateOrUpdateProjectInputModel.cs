@@ -8,9 +8,7 @@ namespace PMWebApp.Models.InputModel
 {
     public class CreateOrUpdateProjectInputModel
     {
-        [Required]
-        public string projectCode { get; set; }
-
+      
         [Required]
         public string projectName { get; set; }
 
@@ -18,6 +16,7 @@ namespace PMWebApp.Models.InputModel
         public decimal projectBudget { get; set; }
         public string projectRemarks { get; set; }
         public bool isActive { get; set; }
+
 
 
     }
