@@ -7,7 +7,7 @@ using System.Web;
 
 namespace PMWebApp.Models.Context
 {
-    public class ProjectsDbContext
+    public class ProjectsDbContext : DbContext
     {
         public DbSet<Project> Projects { get; set; }
     }
