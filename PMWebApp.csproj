@@ -132,6 +132,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\SigninController.cs" />
+    <Compile Include="Controllers\SignoutController.cs" />
     <Compile Include="Facade\ProjectService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -144,6 +145,7 @@
     <Compile Include="Models\Context\ProjectsDbContext.cs" />
     <Compile Include="Models\Entities\Person.cs" />
     <Compile Include="Models\Entities\Project.cs" />
+    <Compile Include="Models\InputModel\CreateOrUpdateProjectInputModel.cs" />
     <Compile Include="Models\InputModel\SigninViewModel.cs" />
     <Compile Include="Models\OutputModel\ProjectsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -291,11 +293,11 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Signin\Index.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
-    <Content Include="Views\Projects\View.cshtml" />
+    <Content Include="Views\Projects\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Services\" />
+    <Folder Include="Views\Signout\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

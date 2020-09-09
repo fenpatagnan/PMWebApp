@@ -26,10 +26,9 @@ namespace PMWebApp.Controllers
 
             FormsAuthentication.SetAuthCookie(LoginInstance.Username, false);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Projects");
            
         }
-
 
     }
 }

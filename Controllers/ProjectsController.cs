@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace PMWebApp.Controllers
 {
- 
+    [Authorize]
     public class ProjectsController : Controller
     {
         // GET: Project
@@ -21,9 +21,9 @@ namespace PMWebApp.Controllers
 
         public ActionResult Create()
         {
-            var ProjectService = new ProjectService();
-            ProjectService.AddNewProject();
-            return Content("ddd");
+            // var ProjectService = new ProjectService();
+            // ProjectService.AddNewProject();
+            return View();
         }
 
 

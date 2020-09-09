@@ -1,0 +1,34 @@
+﻿@model PMWebApp.Models.InputModel.CreateOrUpdateProjectInputModel
+
+    <div class="row">
+        <div class="col-12 mb-5 border-bottom p-3">
+            <span class="display-4 text-info">Create Project</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-6 mx-auto p-4 mb-5">
+            <div class="row">
+                <form method="post" action="@Url.Action("Create")" class="col-12">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <label for="ProjectCode"><strong>Project Code:</strong></label>
+                        <input type="text" name="projectCode" class="form-control form-control-lg" id="ProjectCode">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectName"><strong>Project Name:</strong></label>
+                        <input type="text" name="projectName" class="form-control form-control-lg" id="projectName">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectBudget"><strong>Project Budget:</strong></label>
+                        <input type="text" name="projectBudget" class="form-control form-control-lg" id="projectBudget">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectRemarks"><strong>Remarks:</strong></label>
+                        <input type="text" name="projectRemarks" class="form-control form-control-lg" id="projectRemarks">
+                    </div>
+                    <button type="submit" class="btn btn-success float-lg-right font-weight-bold">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
