@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PMWebApp.Models.Entities
 {
-    public class User
+    public class Person
     {
     }
 }

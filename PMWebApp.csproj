@@ -134,7 +134,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\User.cs" />
+    <Compile Include="Models\Context\ProjectsDbContext.cs" />
+    <Compile Include="Models\Entities\Person.cs" />
+    <Compile Include="Models\Entities\Project.cs" />
     <Compile Include="Models\InputModel\LoginForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
