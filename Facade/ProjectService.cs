@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PMWebApp.Models.Entities;
 
 namespace PMWebApp.Facade
 {
@@ -28,6 +29,23 @@ namespace PMWebApp.Facade
             
             return projectList;
             
+        }
+
+        public bool AddNewProject()
+        {
+            db.Projects.Add(
+                new Project()
+                {
+                    CodeValue = "PRJ0001",
+                    Name = "Sample Project",
+                    Remarks = "my remarks",
+                    Budget = 1000m,
+                    IsActive = true
+                });
+
+
+            db.SaveChanges();
+            return true;
         }
     }
 }

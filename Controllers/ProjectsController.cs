@@ -18,6 +18,13 @@ namespace PMWebApp.Controllers
             return View(ProjectService.ListProjects());
         }
 
+        public ActionResult Create()
+        {
+            var ProjectService = new ProjectService();
+            ProjectService.AddNewProject();
+            return Content("ddd");
+        }
+
 
     }
 }
