@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    @Html.ActionLink("Projects", "Index", "Home", new { @class = "nav-link text-white" })
+                    <a href="@Url.Action("Index", "Projects")" class="nav-link text-white">Projects</a> 
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Members", "Index", "Home", new { @class = "nav-link text-white" })
