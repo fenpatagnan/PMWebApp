@@ -13,16 +13,22 @@ namespace PMWebApp.Models.Entities
         public int Id { get; set; }
 
         [Index(IsUnique = true)]
-        public string Code { get; set; }
+        [MaxLength(8)]
+        public string CodeValue { get; set; }
 
         [MaxLength(255)]
+        [Required]
         public string Name { get; set; }
 
         [MaxLength(255)]
         public string Remarks { get; set; }
+
+        [Required]
         public decimal Budget { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? DateCreated { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }
