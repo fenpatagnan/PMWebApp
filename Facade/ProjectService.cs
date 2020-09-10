@@ -48,6 +48,7 @@ namespace PMWebApp.Facade
                });
 
                db.SaveChanges();
+               projectInput.viewMessage = "New project has been created.";
                return true;
             }
            

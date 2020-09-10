@@ -163,6 +163,7 @@
     <Compile Include="Models\Entities\Project.cs" />
     <Compile Include="Models\InputModel\CreateOrUpdateProjectInputModel.cs" />
     <Compile Include="Models\InputModel\SigninViewModel.cs" />
+    <Compile Include="Models\InputModel\ViewDataAttribute.cs" />
     <Compile Include="Models\OutputModel\ProjectsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -3,39 +3,40 @@
 <div class="row">
     <div class="col-12 mb-5 border-bottom p-3">
         <span class="display-4 text-info">Create Project</span>
+        <a href="@Url.Action("Index", "Projects")" class="btn btn-dark btn-lg mr-3 float-right font-weight-bold shadow"><i class="fa fa-arrow-left"></i> Go Back</a>
+
     </div>
 </div>
 
 <div class="container">
     <div class="col-6 mx-auto p-4 mb-5">
-        <div class="row">
-            <form method="post" action="@Url.Action("Create")" class="col-12">
-                @Html.AntiForgeryToken()
-                <div class="form-group">
-                    <label for="projectCode"><strong>Project Code:</strong></label>
-                    <small class="text-info font-italic font-weight-bold">*Project Code must be minimum of 5 up to 8 characters. </small>
-                    <input type="text" name="projectCode" class="form-control form-control-lg" id="projectCode" maxlength="8">
-                    <span id="projectCodeAvailability" class="mt-1"></span>                    
-                    <small><strong>@Html.ValidationMessageFor(model => model.projectCode, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
-                </div>
-                <div class="form-group">
-                    <label for="projectName"><strong>Project Name:</strong></label>
-                    <input type="text" name="projectName" class="form-control form-control-lg" id="projectName">
-                    <small><strong>@Html.ValidationMessageFor(model => model.projectName, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
-                </div>
-                <div class="form-group">
-                    <label for="projectBudget"><strong>Project Budget:</strong></label>
-                    <input type="text" name="projectBudget" class="form-control form-control-lg" id="projectBudget">
-                    <small><strong>@Html.ValidationMessageFor(model => model.projectBudget, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
-                </div>
-                <div class="form-group">
-                    <label for="projectRemarks"><strong>Remarks:</strong></label>
-                    <input type="text" name="projectRemarks" class="form-control form-control-lg" id="projectRemarks">
-                    <small><strong>@Html.ValidationMessageFor(model => model.projectRemarks, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
-                </div>
-                <button type="submit" class="btn btn-success float-lg-right font-weight-bold btn-lg">Submit</button>
-            </form>
-        </div>
+        <p>@ViewData["viewMessage"]</p>
+        <form method="post" action="@Url.Action("Create")" class="col-12">
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label for="projectCode"><strong>Project Code:</strong></label>
+                <small class="text-info font-italic font-weight-bold">*Project Code must be minimum of 5 up to 8 characters. </small>
+                <input type="text" name="projectCode" class="form-control form-control-lg" id="projectCode" maxlength="8">
+                <span id="projectCodeAvailability" class="mt-1"></span>
+                <small><strong>@Html.ValidationMessageFor(model => model.projectCode, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+            </div>
+            <div class="form-group">
+                <label for="projectName"><strong>Project Name:</strong></label>
+                <input type="text" name="projectName" class="form-control form-control-lg" id="projectName">
+                <small><strong>@Html.ValidationMessageFor(model => model.projectName, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+            </div>
+            <div class="form-group">
+                <label for="projectBudget"><strong>Project Budget:</strong></label>
+                <input type="text" name="projectBudget" class="form-control form-control-lg" id="projectBudget">
+                <small><strong>@Html.ValidationMessageFor(model => model.projectBudget, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+            </div>
+            <div class="form-group">
+                <label for="projectRemarks"><strong>Remarks:</strong></label>
+                <textarea class="form-control form-control-lg" name="projectRemarks" id="projectRemarks" rows="6"></textarea>
+                <small><strong>@Html.ValidationMessageFor(model => model.projectRemarks, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+            </div>
+            <button type="submit" class="btn btn-success float-lg-right font-weight-bold btn-lg">Submit</button>
+        </form>
     </div>
 </div>
 

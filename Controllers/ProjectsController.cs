@@ -35,7 +35,7 @@ namespace PMWebApp.Controllers
 
             var projectService = new ProjectService();
             projectService.CreateTheProject(projectInput);
-            return RedirectToAction("Index");
+            return View("Create");
         }
 
         [HttpPost]

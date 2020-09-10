@@ -31,6 +31,9 @@ namespace PMWebApp.Models.InputModel
         public string projectRemarks { get; set; }
         public bool isActive { get; set; }
 
+        [ViewData]
+        public string viewMessage { get; set; }
+
 
 
 

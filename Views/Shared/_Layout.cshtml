@@ -6,6 +6,7 @@
     <title>Project Management System</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="https://use.fontawesome.com/d3b9f921ac.js"></script>
 </head>
 <body>
   
@@ -23,20 +24,16 @@
                         <a href="@Url.Action("Index", "Projects")" class="nav-link text-white">Projects</a>
                     </li>
                 }
-
-                @if (User.Identity.Name != "")
-                {
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Members")" class="nav-link text-white">Members</a>
-                    </li>
-                }
             </ul>
 
             @if (User.Identity.Name != "")
             {
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="@Url.Action("Index", "Signout")" class="nav-link text-white">Log Out</a>
+                        <span class="text-white d-inline-block mt-2 mr-3">Welcome <strong>@User.Identity.Name!</strong></span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "Signout")" class="nav-link text-white" style="text-decoration:underline">Log Out</a>
                     </li>
                 </ul>
             }
