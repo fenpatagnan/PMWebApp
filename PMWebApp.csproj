@@ -157,6 +157,10 @@
     <Compile Include="Migrations\202009091140586_Project.designer.cs">
       <DependentUpon>202009091140586_Project.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009100746561_Person.cs" />
+    <Compile Include="Migrations\202009100746561_Person.designer.cs">
+      <DependentUpon>202009100746561_Person.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\ProjectsDbContext.cs" />
     <Compile Include="Models\Entities\Person.cs" />
@@ -329,6 +333,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009091140586_Project.resx">
       <DependentUpon>202009091140586_Project.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009100746561_Person.resx">
+      <DependentUpon>202009100746561_Person.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -29,9 +29,21 @@ namespace PMWebApp.Controllers
         [HttpPost]
         public ActionResult Create(CreateOrUpdateProjectInputModel projectInput)
         {
+            if(!ModelState.IsValid)
+            {
+                return View(projectInput);
+            }
+
             var ProjectService = new ProjectService();
             ProjectService.CreateTheProject(projectInput);
-            return View("Index");
+            return RedirectToAction("Create");
+        }
+
+        public JsonResult isProjectAvail(CreateOrUpdateProjectInputModel projectInput)
+        {
+            var ProjectService = new ProjectService();
+            //return Json(ProjectService.checkAvailability(projectInput.projectCode), JsonRequestBehavior.AllowGet);
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
 
 

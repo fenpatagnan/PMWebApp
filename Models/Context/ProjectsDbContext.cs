@@ -10,5 +10,6 @@ namespace PMWebApp.Models.Context
     public class ProjectsDbContext : DbContext
     {
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Person> Persons { get; set; }
     }
 }
