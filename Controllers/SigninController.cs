@@ -13,6 +13,11 @@ namespace PMWebApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            if(User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Projects");
+            }
+
             return View();
         }
 

@@ -26,9 +26,11 @@ namespace PMWebApp.Models.Entities
         [Required]
         public decimal Budget { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? DateCreated { get; set; }
 
         public bool IsActive { get; set; }
+
+
+
     }
 }

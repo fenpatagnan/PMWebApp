@@ -1,24 +1,24 @@
 ﻿@model PMWebApp.Models.InputModel.SigninViewModel
 
-    <div class="row text-dark">
-        <div class="col-3 mx-auto p-5 mt-3 mb-3 border rounded">
-            <h1 class="display-5 py-2 text-center font-weight-light mb-1">Login</h1>
-            <hr />
-            <form method="post" action="@Url.Action("Index")" class="p-3 ml-3">
-                @Html.AntiForgeryToken()
-                <div class="form-group">
-                    <label for="Username"><span class="font-weight-bold">Username</span></label>
-                    <input type="text" class="form-control " id="Username" name="Username" autofocus="true">
-                    <small class="font-italic text-muted">Please use your email to login.</small>
-                    <small>@Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger d-block" })</small>
-                </div>
-                <div class="form-group">
-                    <label for="Password"><span class="font-weight-bold">Password</span></label>
-                    <input type="password" class="form-control" id="Password" name="Password">
-                    <small>@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })</small>
-                </div>
-                <input type="submit" class="btn btn-success btn-block mt-4" name="btnLogin" cla value="Login" />
-            </form>
-        </div>
+<div class="row text-dark">
+    <div class="col-3 mx-auto p-5 mt-3 mb-3 border rounded">
+        <h1 class="display-5 py-2 text-center font-weight-light mb-1">Login</h1>
+        <hr />
+        <form method="post" action="@Url.Action("Index")" class="p-3 ml-3">
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label for="Username"><span class="font-weight-bold">Username</span></label>
+                <input type="text" class="form-control" id="Username" name="Username" autofocus>
+                <small class="font-italic text-muted">Please use your email to login.</small>
+                <small><strong>@Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+            </div>
+            <div class="form-group">
+                <label for="Password"><span class="font-weight-bold">Password</span></label>
+                <input type="password" class="form-control" id="Password" name="Password">
+                <small><strong>@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })</strong></small>
+            </div>
+            <input type="submit" class="btn btn-success btn-block mt-4" name="btnLogin" cla value="Login" />
+        </form>
     </div>
- 
+</div>
+ is-invalid

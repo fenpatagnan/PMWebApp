@@ -10,17 +10,14 @@ namespace PMWebApp.Models.InputModel
     {
        
         [Required]
-        [MaxLength(200)]
+        [StringLength(200, MinimumLength = 5)]
         [DataType(DataType.EmailAddress)]
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Please enter valid email address.")]
         public string Username { get; set; }
 
         [Required]
-        [MinLength(5, ErrorMessage ="Invalid password length.")]
-        [MaxLength(11, ErrorMessage = "Invalid password length.")]
+        [StringLength(11, MinimumLength = 5)]
         public string Password { get; set; }
-
-       
 
     }
 }
