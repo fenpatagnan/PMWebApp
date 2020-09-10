@@ -34,7 +34,7 @@ namespace PMWebApp.Facade
 
         public bool CreateTheProject(CreateOrUpdateProjectInputModel projectInput)
         {
-            if(isUnique(projectInput.projectCode))
+            if(!IsUnique(projectInput.projectCode))
             {
                db.Projects.Add(
                new Project()
@@ -53,19 +53,15 @@ namespace PMWebApp.Facade
             return false;
         }
 
-        public bool isUnique(string inputCode)
+        public bool IsUnique(string inputCode)
         {
-            var code = db.Projects.Where(v => v.CodeValue == inputCode).FirstOrDefault();
-            return (code == null ? true : false);
-             
-            
+            return db.Projects.Any(v => v.CodeValue == inputCode);
         }
 
-        public bool checkAvailability(string ProjectCode)
-        {
-
-            var code = db.Projects.Where(v => v.CodeValue == ProjectCode).FirstOrDefault();
-            return (code == null ? true : false);
-        }
+        //public bool checkAvailability(string projectCode)
+       // {
+           // return db.Projects.Any(v => v.CodeValue == projectCode);
+           
+       // }
     }
 }

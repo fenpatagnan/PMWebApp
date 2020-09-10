@@ -39,11 +39,11 @@ namespace PMWebApp.Controllers
             return RedirectToAction("Create");
         }
 
-        public JsonResult isProjectAvail(CreateOrUpdateProjectInputModel projectInput)
+        [HttpPost]
+        public JsonResult IsProjectAvail(string projectCode)
         {
             var ProjectService = new ProjectService();
-            //return Json(ProjectService.checkAvailability(projectInput.projectCode), JsonRequestBehavior.AllowGet);
-            return Json(false, JsonRequestBehavior.AllowGet);
+            return Json(ProjectService.IsUnique(projectCode), JsonRequestBehavior.AllowGet);
         }
 
 

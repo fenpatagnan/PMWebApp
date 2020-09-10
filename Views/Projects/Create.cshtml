@@ -13,7 +13,9 @@
                 @Html.AntiForgeryToken()
                 <div class="form-group">
                     <label for="projectCode"><strong>Project Code:</strong></label>
-                    <input type="text" name="projectCode" class="form-control form-control-lg" id="projectCode" value="">
+                    <small class="text-info font-italic font-weight-bold">*Project Code must be minimum of 5 up to 8 characters. </small>
+                    <input type="text" name="projectCode" class="form-control form-control-lg" id="projectCode" maxlength="8">
+                    <span id="projectCodeAvailability" class="mt-1"></span>                    
                     <small><strong>@Html.ValidationMessageFor(model => model.projectCode, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
                 </div>
                 <div class="form-group">
@@ -38,20 +40,30 @@
 </div>
 
 
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
-<script>
-    $.post('@Url.Action("isProjectAvail", "Projects")',
-        {
-            userdata: $("#projectCode").val()
-        },
-        function (data) {
-            if (data == 0) {
-                console.log("err")
-            } else {
-                console.log("nice")
+    <script> 
+
+        $("#projectCode").keyup(function () {
+
+        let charCount = $('#projectCode').val().length;
+
+            if (charCount >= 5) {
+                runHTTPRequest()
             }
         })
+
+        function runHTTPRequest() {
+             $.post('@Url.Action("IsProjectAvail", "Projects")',
+            {
+                projectCode: $("#projectCode").val()
+            },
+            function (data) {
+                if (data == 0) {
+                    $("#projectCodeAvailability").html("<small class=\"text-success\"><strong>Project is available.</strong></small>");
+                } else {
+                    $("#projectCodeAvailability").html("<small class=\"text-danger\"><strong>Project is not available.</strong></small>");
+                }
+            })
+        }    
 </script>

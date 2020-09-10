@@ -12,7 +12,7 @@ namespace PMWebApp.Models.InputModel
     public class CreateOrUpdateProjectInputModel
     {
         [Required]
-        [Remote("isProjectAvail", "Projects", AdditionalFields = "projectCode", ErrorMessage = "Project already unavailable")]
+        [StringLength(8, MinimumLength = 5)]
         [DisplayName("Project Code")]
         public string projectCode { get; set; }
 
