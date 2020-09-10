@@ -22,18 +22,20 @@ namespace PMWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(SigninViewModel LoginInstance)
+        public ActionResult Index(SigninViewModel loginInstance)
         {
             if (!ModelState.IsValid)
             {
-                return View(LoginInstance);
+                return View(loginInstance);
             }
 
-            FormsAuthentication.SetAuthCookie(LoginInstance.Username, false);
+            FormsAuthentication.SetAuthCookie(loginInstance.Username, false);
 
             return RedirectToAction("Index", "Projects");
            
         }
+
+        
 
     }
 }

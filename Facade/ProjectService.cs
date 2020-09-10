@@ -43,6 +43,7 @@ namespace PMWebApp.Facade
                    Name = projectInput.projectName,
                    Remarks = projectInput.projectRemarks,
                    Budget = projectInput.projectBudget,
+                   DateCreated = DateTime.Now,
                    IsActive = true
                });
 
@@ -58,10 +59,6 @@ namespace PMWebApp.Facade
             return db.Projects.Any(v => v.CodeValue == inputCode);
         }
 
-        //public bool checkAvailability(string projectCode)
-       // {
-           // return db.Projects.Any(v => v.CodeValue == projectCode);
-           
-       // }
+        
     }
 }

@@ -13,14 +13,19 @@ namespace PMWebApp.Models.Entities
         public int Id { get; set; }
 
         [Index(IsUnique = true)]
-        [MaxLength(200)]
+        [StringLength(200, MinimumLength = 5)]
         public string Username { get; set; }
 
-        public string Lastname { get; set; }
-
-        [MaxLength(255)]
+        [StringLength(11, MinimumLength = 5)]
         public string Password { get; set; }
 
-        ICollection<Project> Projects { get; set; }
+        [StringLength(50, MinimumLength = 2)]
+        public string LastName { get; set; }
+
+        [StringLength(50, MinimumLength = 2)]
+        public string FirstName { get; set; }
+
+        public DateTime? DateCreated { get; set; }
+
     }
 }

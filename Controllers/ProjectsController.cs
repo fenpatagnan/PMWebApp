@@ -15,9 +15,8 @@ namespace PMWebApp.Controllers
         // GET: Project
         public ActionResult Index()
         {
-            var ProjectService = new ProjectService();
-            
-            return View(ProjectService.ListProjects());
+            var projectService = new ProjectService();          
+            return View(projectService.ListProjects());
         }
 
         [HttpGet]
@@ -34,16 +33,23 @@ namespace PMWebApp.Controllers
                 return View(projectInput);
             }
 
-            var ProjectService = new ProjectService();
-            ProjectService.CreateTheProject(projectInput);
-            return RedirectToAction("Create");
+            var projectService = new ProjectService();
+            projectService.CreateTheProject(projectInput);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         public JsonResult IsProjectAvail(string projectCode)
         {
-            var ProjectService = new ProjectService();
-            return Json(ProjectService.IsUnique(projectCode), JsonRequestBehavior.AllowGet);
+            var projectService = new ProjectService();
+            return Json(projectService.IsUnique(projectCode), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(string projectCode)
+        {
+            var projectService = new ProjectService();
+            return View();
         }
 
 

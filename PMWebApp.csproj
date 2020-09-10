@@ -153,13 +153,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009091140586_Project.cs" />
-    <Compile Include="Migrations\202009091140586_Project.designer.cs">
-      <DependentUpon>202009091140586_Project.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009100746561_Person.cs" />
-    <Compile Include="Migrations\202009100746561_Person.designer.cs">
-      <DependentUpon>202009100746561_Person.cs</DependentUpon>
+    <Compile Include="Migrations\202009101354149_Project.cs" />
+    <Compile Include="Migrations\202009101354149_Project.designer.cs">
+      <DependentUpon>202009101354149_Project.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\ProjectsDbContext.cs" />
@@ -315,6 +311,7 @@
     <Content Include="Views\Signin\Index.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\Create.cshtml" />
+    <Content Include="Views\Projects\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,11 +329,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009091140586_Project.resx">
-      <DependentUpon>202009091140586_Project.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009100746561_Person.resx">
-      <DependentUpon>202009100746561_Person.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009101354149_Project.resx">
+      <DependentUpon>202009101354149_Project.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

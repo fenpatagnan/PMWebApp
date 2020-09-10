@@ -8,6 +8,20 @@
         public override void Up()
         {
             CreateTable(
+                "dbo.People",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Username = c.String(maxLength: 200),
+                        Password = c.String(maxLength: 11),
+                        LastName = c.String(maxLength: 50),
+                        FirstName = c.String(maxLength: 50),
+                        DateCreated = c.DateTime(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Username, unique: true);
+            
+            CreateTable(
                 "dbo.Projects",
                 c => new
                     {
@@ -27,7 +41,9 @@
         public override void Down()
         {
             DropIndex("dbo.Projects", new[] { "CodeValue" });
+            DropIndex("dbo.People", new[] { "Username" });
             DropTable("dbo.Projects");
+            DropTable("dbo.People");
         }
     }
 }

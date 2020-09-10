@@ -13,7 +13,7 @@ namespace PMWebApp.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202009091140586_Project"; }
+            get { return "202009101354149_Project"; }
         }
         
         string IMigrationMetadata.Source

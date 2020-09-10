@@ -7,43 +7,50 @@
         </div>
         
         <div class="col-10 mx-auto p-4">
-            <table class="table shadow mb-5 text-center">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Project Code</th>
-                        <th>Project Name</th>
-                        <th>Budget</th>
-                        <th>Active</th>
-                        <th colspan="3">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
 
-                    @foreach (var item in Model)
-                    {
+            @if (Model.Count() == 0)
+            {
+                <h2>No projects available.</h2>
+            }
+            else
+            {
+                <table class="table shadow mb-5 text-center">
+                    <thead class="thead-dark">
                         <tr>
-                            <td>
-                                <strong>@Html.DisplayFor(modelItem => item.projectCode)</strong>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.projectName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.projectBudget)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.isActive)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id=item.projectCode }) |
-                                @Html.ActionLink("Details", "Details", new { id=item.projectCode }) |
-                                @Html.ActionLink("Delete", "Delete", new { id=item.projectCode })
-                            </td>
+                            <th>Project Code</th>
+                            <th>Project Name</th>
+                            <th>Budget</th>
+                            <th>Active</th>
+                            <th colspan="3">Action</th>
                         </tr>
-                    }
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <strong>@Html.DisplayFor(modelItem => item.projectCode)</strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.projectName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.projectBudget)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.isActive)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.projectCode }) 
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
-            </div>
+            }
+
+
+        </div>
         </div>
 
 
