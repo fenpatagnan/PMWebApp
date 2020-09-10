@@ -43,7 +43,7 @@
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
 <script>
-    $.post('@Url.Action("isProjectAvail"), "Projects")',
+    $.post('@Url.Action("isProjectAvail", "Projects")',
         {
             userdata: $("#projectCode").val()
         },
