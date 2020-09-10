@@ -13,11 +13,13 @@ namespace PMWebApp.Models.InputModel
         [StringLength(200, MinimumLength = 5)]
         [DataType(DataType.EmailAddress)]
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Please enter valid email address.")]
-        public string Username { get; set; }
+        public string username { get; set; }
 
         [Required]
         [StringLength(11, MinimumLength = 5)]
-        public string Password { get; set; }
+        public string password { get; set; }
+
+        public bool isInvalid = false;
 
     }
 }

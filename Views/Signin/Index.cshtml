@@ -7,16 +7,24 @@
         <form method="post" action="@Url.Action("Index")" class="p-3 ml-3">
             @Html.AntiForgeryToken()
             <div class="form-group">
-                <label for="Username"><span class="font-weight-bold">Username</span></label>
-                <input type="text" class="form-control" id="Username" name="Username" autofocus>
+                <label for="username"><span class="font-weight-bold">Username</span></label>
+                <input type="text" class="form-control" id="username" name="username" value="@Model.username" autofocus>
                 <small class="font-italic text-muted">Please use your email to login.</small>
-                <small><strong>@Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+                <small><strong>@Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
             </div>
             <div class="form-group">
-                <label for="Password"><span class="font-weight-bold">Password</span></label>
-                <input type="password" class="form-control" id="Password" name="Password">
-                <small><strong>@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })</strong></small>
+                <label for="password"><span class="font-weight-bold">Password</span></label>
+                <input type="password" class="form-control" id="password" name="password">
+                <small><strong>@Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })</strong></small>
             </div>
+
+            @if (Model.isInvalid)
+            {
+                <div class="alert alert-danger font-weight-bold" role="alert">
+                    Invalid username or password.
+                </div>
+            }
+
             <input type="submit" class="btn btn-success btn-block mt-4" name="btnLogin" cla value="Login" />
         </form>
     </div>

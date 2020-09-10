@@ -22,7 +22,8 @@ namespace PMWebApp.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            CreateOrUpdateProjectInputModel input = new CreateOrUpdateProjectInputModel();
+            return View(input);
         }
 
         [HttpPost]
@@ -34,8 +35,9 @@ namespace PMWebApp.Controllers
             }
 
             var projectService = new ProjectService();
-            projectService.CreateTheProject(projectInput);
-            return View("Create");
+            projectInput.isSuccess = projectService.CreateTheProject(projectInput);
+
+            return View("Create", projectInput);
         }
 
         [HttpPost]

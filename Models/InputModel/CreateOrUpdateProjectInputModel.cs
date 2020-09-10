@@ -17,6 +17,7 @@ namespace PMWebApp.Models.InputModel
         public string projectCode { get; set; }
 
         [Required]
+        [StringLength(100, MinimumLength = 3)]
         [DisplayName("Project Name")]
         public string projectName { get; set; }
 
@@ -31,11 +32,7 @@ namespace PMWebApp.Models.InputModel
         public string projectRemarks { get; set; }
         public bool isActive { get; set; }
 
-        [ViewData]
-        public string viewMessage { get; set; }
-
-
-
+        public bool isSuccess = false;
 
     }
 }

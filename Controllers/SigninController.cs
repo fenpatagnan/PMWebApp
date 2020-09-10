@@ -1,4 +1,5 @@
-﻿using PMWebApp.Models.InputModel;
+﻿using PMWebApp.Facade;
+using PMWebApp.Models.InputModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,26 +14,32 @@ namespace PMWebApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            if(User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Projects");
             }
 
-            return View();
+            SigninViewModel loginCred = new SigninViewModel();
+            return View(loginCred);
         }
 
         [HttpPost]
-        public ActionResult Index(SigninViewModel loginInstance)
+        public ActionResult Index(SigninViewModel loginCred)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(loginInstance);
+                AccessService access = new AccessService();
+
+                if (access.GrantAccess(loginCred))
+                {
+                    return RedirectToAction("Index", "Projects");
+                }
+            } else
+            {
+                loginCred.isInvalid = true;
             }
 
-            FormsAuthentication.SetAuthCookie(loginInstance.Username, false);
-
-            return RedirectToAction("Index", "Projects");
-           
+            return View(loginCred);
         }
 
         

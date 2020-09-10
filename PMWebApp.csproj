@@ -149,6 +149,7 @@
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\SigninController.cs" />
     <Compile Include="Controllers\SignoutController.cs" />
+    <Compile Include="Facade\AccessService.cs" />
     <Compile Include="Facade\ProjectService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
