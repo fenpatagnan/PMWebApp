@@ -34,24 +34,19 @@ namespace PMWebApp.Facade
 
         public bool CreateTheProject(CreateOrUpdateProjectInputModel projectInput)
         {
-            if(!IsProjectCodeDuplicate(projectInput.projectCode))
-            {
-               db.Projects.Add(
-               new Project()
-               {
-                   CodeValue = projectInput.projectCode,
-                   Name = projectInput.projectName,
-                   Remarks = projectInput.projectRemarks,
-                   Budget = projectInput.projectBudget,
-                   DateCreated = DateTime.Now,
-                   IsActive = true
-               });
+            db.Projects.Add(
+                new Project()
+                {
+                    CodeValue = projectInput.projectCode,
+                    Name = projectInput.projectName,
+                    Remarks = projectInput.projectRemarks,
+                    Budget = projectInput.projectBudget,
+                    DateCreated = DateTime.Now,
+                    IsActive = true
+            });
 
-               db.SaveChanges();
-               return true;
-            }
-           
-            return false;
+            db.SaveChanges();
+            return true;
         }
 
         public bool IsProjectCodeDuplicate(string inputCode)

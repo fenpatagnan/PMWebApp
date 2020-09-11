@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PMWebApp.Models.CustomValidationModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -14,6 +15,7 @@ namespace PMWebApp.Models.InputModel
         [Required]
         [StringLength(8, MinimumLength = 5)]
         [DisplayName("Project Code")]
+        [UniqueProject]
         public string projectCode { get; set; }
 
         [Required]

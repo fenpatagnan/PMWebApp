@@ -29,13 +29,12 @@ namespace PMWebApp.Controllers
         [HttpPost]
         public ActionResult Create(CreateOrUpdateProjectInputModel projectInput)
         {
-            if(!ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                return View(projectInput);
+                var projectService = new ProjectService();
+                projectInput.isSuccess = projectService.CreateTheProject(projectInput);
+                return View("SuccessPage");
             }
-
-            var projectService = new ProjectService();
-            projectInput.isSuccess = projectService.CreateTheProject(projectInput);
 
             return View("Create", projectInput);
         }

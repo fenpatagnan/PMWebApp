@@ -8,20 +8,21 @@ using System.Web;
 
 namespace PMWebApp.Models.CustomValidationModel
 {
-    public class UniqueUsernameAttribute : ValidationAttribute
+    public class UniqueProjectAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            CreateOrUpdatePersonInputModel person = (CreateOrUpdatePersonInputModel)validationContext.ObjectInstance;
+            CreateOrUpdateProjectInputModel project = (CreateOrUpdateProjectInputModel)validationContext.ObjectInstance;
 
-            PersonService personService = new PersonService();
-           
-            if (personService.IsUsernameDuplicate(person.username))
+            ProjectService projectService = new ProjectService();
+
+            if (projectService.IsProjectCodeDuplicate(project.projectCode))
             {
-                return new ValidationResult("Username is already taken.");
+                return new ValidationResult("Project Code is already taken.");
             }
 
             return ValidationResult.Success;
         }
     }
+    
 }
