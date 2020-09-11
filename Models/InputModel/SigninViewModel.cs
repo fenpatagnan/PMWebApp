@@ -11,7 +11,6 @@ namespace PMWebApp.Models.InputModel
        
         [Required]
         [StringLength(200, MinimumLength = 5)]
-        [DataType(DataType.EmailAddress)]
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Please enter valid email address.")]
         public string username { get; set; }
 

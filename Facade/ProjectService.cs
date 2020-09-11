@@ -21,8 +21,8 @@ namespace PMWebApp.Facade
             foreach (var project in projects)
             {
                 projectList.Add( new ProjectsViewModel() {
-                    projectCode = project.CodeValue,
-                    projectName = project.Name,
+                    projectCode = project.CodeValue.Trim(),
+                    projectName = project.Name.Trim(),
                     projectBudget = project.Budget,
                     isActive = project.IsActive
                 });
@@ -34,7 +34,7 @@ namespace PMWebApp.Facade
 
         public bool CreateTheProject(CreateOrUpdateProjectInputModel projectInput)
         {
-            if(!IsUnique(projectInput.projectCode))
+            if(!IsProjectCodeDuplicate(projectInput.projectCode))
             {
                db.Projects.Add(
                new Project()
@@ -54,10 +54,11 @@ namespace PMWebApp.Facade
             return false;
         }
 
-        public bool IsUnique(string inputCode)
+        public bool IsProjectCodeDuplicate(string inputCode)
         {
             return db.Projects.Any(v => v.CodeValue == inputCode);
         }
+
 
         
     }

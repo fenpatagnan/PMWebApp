@@ -4,7 +4,7 @@
         <div class="col-12 mb-5 border-bottom p-3">
             <span class="display-4 text-info">Projects</span>
 
-            <a href="@Url.Action("Create","Projects")" class="btn btn-success btn-lg mr-3 float-right font-weight-bold shadow"><i class="fa fa-user"></i>&nbsp;Create Person</a>
+            <a href="@Url.Action("Create","Persons")" class="btn btn-success btn-lg mr-3 float-right font-weight-bold shadow"><i class="fa fa-user"></i>&nbsp;Create Person</a>
             <a href="@Url.Action("Create","Projects")" class="btn btn-primary btn-lg mr-3 float-right font-weight-bold shadow"><i class="fa fa-plus"></i>&nbsp;Create Project</a>
         </div>
         
@@ -19,11 +19,9 @@
                 <table class="table shadow mb-5 text-center">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Project Code</th>
                             <th>Project Name</th>
                             <th>Budget</th>
-                            <th>Active</th>
-                            <th colspan="3">Action</th>
+                            <th>Tasks</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,19 +29,14 @@
                         {
                             <tr>
                                 <td>
-                                    <strong>@Html.DisplayFor(modelItem => item.projectCode)</strong>
-                                </td>
-                                <td>
                                     @Html.DisplayFor(modelItem => item.projectName)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.projectBudget)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.isActive)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.projectCode }) 
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.projectCode }) |
+                                    @Html.ActionLink("Assignments", "Assign", new { id = item.projectCode })
                                 </td>
                             </tr>
                         }

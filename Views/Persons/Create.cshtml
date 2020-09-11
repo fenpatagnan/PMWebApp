@@ -1,0 +1,58 @@
+﻿@model PMWebApp.Models.InputModel.CreateOrUpdatePersonInputModel
+
+<div class="row">
+    <div class="col-12 mb-5 border-bottom p-3">
+        <span class="display-4 text-info">Create Person</span>
+        <a href="@Url.Action("Index", "Projects")" class="btn btn-dark btn-lg mr-3 float-right font-weight-bold shadow"><i class="fa fa-arrow-left"></i> Go Back</a>
+
+    </div>
+</div>
+@if (Model.isSuccess)
+{
+    <div class="alert alert-success">
+        <strong>Hooray!</strong> New Person has been registered.
+    </div>
+}
+
+@if (Model.isUsernameTaken)
+{
+    <div class="alert alert-warning">
+        <strong>Uh Oh!</strong> The username you've entered is already taken. Please supply a new one.
+    </div>
+}
+
+<div class="container">
+    <div class="col-6 mx-auto p-4 mb-5">
+        <form method="post" action="@Url.Action("Create")" class="col-12" id="frmPerson">
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <label for="lastName"><strong>Last Name</strong></label>
+                <input type="text" name="lastName" class="form-control form-control-lg" id="lastName" value="@Model.lastName">
+                <small><strong>@Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+            </div>
+
+            <div class="form-group">
+                <label for="firstName"><strong>First Name</strong></label>
+                <input type="text" name="firstName" class="form-control form-control-lg" id="lastName" value="@Model.firstName">
+                <small><strong>@Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+            </div>
+
+            <div class="form-group">
+                <label for="username"><strong>Username</strong></label>
+                <input type="text" name="username" class="form-control form-control-lg" id="username" value="@Model.username">
+                <small><strong>@Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+            </div>
+
+            <div class="form-group">
+                <label for="password"><strong>Password</strong></label>
+                <input type="password" name="password" class="form-control form-control-lg" id="username" value="">
+                <small><strong>@Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+            </div>
+
+
+            <button type="submit" class="btn btn-success float-lg-right font-weight-bold btn-lg">Submit</button>
+        </form>
+    </div>
+</div>
+

@@ -23,7 +23,6 @@ namespace PMWebApp.Models.InputModel
 
         [Required]
         [DisplayName("Project Budget")]
-        [DataType(DataType.Currency)]
         [RegularExpression(@"^(0|-?\d{0,16}(\.\d{0,2})?)$", ErrorMessage = "Please enter a valid amount.")]
         [Range(0, 9999999999999999.99)]
         public decimal projectBudget { get; set; }
@@ -33,6 +32,8 @@ namespace PMWebApp.Models.InputModel
         public bool isActive { get; set; }
 
         public bool isSuccess = false;
+
+       
 
     }
 }

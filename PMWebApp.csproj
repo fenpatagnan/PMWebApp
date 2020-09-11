@@ -145,11 +145,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PersonsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\SigninController.cs" />
     <Compile Include="Controllers\SignoutController.cs" />
     <Compile Include="Facade\AccessService.cs" />
+    <Compile Include="Facade\PersonService.cs" />
     <Compile Include="Facade\ProjectService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -162,9 +163,9 @@
     <Compile Include="Models\Context\ProjectsDbContext.cs" />
     <Compile Include="Models\Entities\Person.cs" />
     <Compile Include="Models\Entities\Project.cs" />
+    <Compile Include="Models\InputModel\CreateOrUpdatePersonInputModel.cs" />
     <Compile Include="Models\InputModel\CreateOrUpdateProjectInputModel.cs" />
     <Compile Include="Models\InputModel\SigninViewModel.cs" />
-    <Compile Include="Models\InputModel\ViewDataAttribute.cs" />
     <Compile Include="Models\OutputModel\ProjectsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -297,9 +298,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -314,6 +312,7 @@
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\Create.cshtml" />
     <Content Include="Views\Projects\Edit.cshtml" />
+    <Content Include="Views\Persons\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -22,8 +22,8 @@ namespace PMWebApp.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            CreateOrUpdateProjectInputModel input = new CreateOrUpdateProjectInputModel();
-            return View(input);
+            CreateOrUpdateProjectInputModel project = new CreateOrUpdateProjectInputModel();
+            return View(project);
         }
 
         [HttpPost]
@@ -44,7 +44,7 @@ namespace PMWebApp.Controllers
         public JsonResult IsProjectAvail(string projectCode)
         {
             var projectService = new ProjectService();
-            return Json(projectService.IsUnique(projectCode), JsonRequestBehavior.AllowGet);
+            return Json(projectService.IsProjectCodeDuplicate(projectCode), JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -52,6 +52,11 @@ namespace PMWebApp.Controllers
         {
             var projectService = new ProjectService();
             return View();
+        }
+
+        public ActionResult Assign(string projectCode)
+        {
+            return HttpNotFound();
         }
 
 

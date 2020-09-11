@@ -34,11 +34,10 @@ namespace PMWebApp.Controllers
                 {
                     return RedirectToAction("Index", "Projects");
                 }
-            } else
-            {
-                loginCred.isInvalid = true;
             }
-
+            
+            loginCred.isInvalid = true;
+            
             return View(loginCred);
         }
 

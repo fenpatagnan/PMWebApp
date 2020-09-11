@@ -16,7 +16,7 @@ namespace PMWebApp.Models.Entities
         [StringLength(200, MinimumLength = 5)]
         public string Username { get; set; }
 
-        [StringLength(11, MinimumLength = 5)]
+        [StringLength(11, MinimumLength = 7)]
         public string Password { get; set; }
 
         [StringLength(50, MinimumLength = 2)]

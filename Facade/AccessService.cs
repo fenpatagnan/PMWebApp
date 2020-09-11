@@ -16,15 +16,23 @@ namespace PMWebApp.Facade
         {
            
             var userData = db.People.Where(u => u.Username == loginCred.username).FirstOrDefault();
-            bool isPasswordValid = loginCred.password.Equals(userData.Password);
 
-            if(isPasswordValid)
+            bool isPasswordValid = false;
+
+            if(userData != null)
             {
-                FormsAuthentication.SetAuthCookie(userData.FirstName, false);
+                isPasswordValid = loginCred.password.Equals(userData.Password);
+
+                if(isPasswordValid)
+                {
+                    FormsAuthentication.SetAuthCookie(userData.FirstName, false);
+                }
             }
-           
+                      
             return isPasswordValid;
 
         }
+
+
     }
 }
