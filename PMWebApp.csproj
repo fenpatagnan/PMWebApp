@@ -161,6 +161,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\ProjectsDbContext.cs" />
+    <Compile Include="Models\CustomValidationModel\IClientModelValidator.cs" />
+    <Compile Include="Models\CustomValidationModel\UniqueUsernameAttribute.cs" />
     <Compile Include="Models\Entities\Person.cs" />
     <Compile Include="Models\Entities\Project.cs" />
     <Compile Include="Models\InputModel\CreateOrUpdatePersonInputModel.cs" />

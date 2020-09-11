@@ -23,23 +23,14 @@ namespace PMWebApp.Controllers
         [HttpPost]
         public ActionResult Create(CreateOrUpdatePersonInputModel personInput)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(personInput);
-            }
-
-            var personService = new PersonService();
-           
-            personInput.isUsernameTaken = personService.IsUsernameDuplicate(personInput.username);
-
-            if(!personInput.isUsernameTaken)
-            {
+                var personService = new PersonService();
                 personInput.isSuccess = personService.CreatePerson(personInput);
+                return View("SuccessPage");
             }
-
 
             return View(personInput);
-
         }
     }
 }

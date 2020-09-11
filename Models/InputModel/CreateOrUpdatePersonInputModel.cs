@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PMWebApp.Models.CustomValidationModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -13,6 +14,7 @@ namespace PMWebApp.Models.InputModel
         [StringLength(200, MinimumLength = 5)]
         [DataType(DataType.EmailAddress)]
         [DisplayName("Username")]
+        [UniqueUsername]
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Please enter valid email address.")]
         public string username { get; set; }
 
