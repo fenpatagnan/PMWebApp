@@ -166,6 +166,7 @@
     <Compile Include="Models\InputModel\CreateOrUpdatePersonInputModel.cs" />
     <Compile Include="Models\InputModel\CreateOrUpdateProjectInputModel.cs" />
     <Compile Include="Models\InputModel\SigninViewModel.cs" />
+    <Compile Include="Models\OutputModel\AddOrUpdatePersonSuccessViewModel.cs" />
     <Compile Include="Models\OutputModel\ProjectsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -313,6 +314,7 @@
     <Content Include="Views\Projects\Create.cshtml" />
     <Content Include="Views\Projects\Edit.cshtml" />
     <Content Include="Views\Persons\Create.cshtml" />
+    <Content Include="Views\Persons\SuccessPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

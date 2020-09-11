@@ -1,0 +1,13 @@
+﻿
+@if (Model.isSuccess)
+{
+    <div class="row">
+        <div class="col-10 mx-auto mt-5 p-3">
+            <div class="alert alert-success">
+                <strong>Hooray!</strong> New Person has been registered.
+                <a href="@Url.Action("Create")">Create Again</a>
+            </div>
+        </div>
+    </div>
+   
+}

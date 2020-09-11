@@ -1,5 +1,6 @@
 ﻿using PMWebApp.Facade;
 using PMWebApp.Models.InputModel;
+using PMWebApp.Models.OutputModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,12 +34,12 @@ namespace PMWebApp.Controllers
 
             if(!personInput.isUsernameTaken)
             {
-                ModelState.Clear();
                 personInput.isSuccess = personService.CreatePerson(personInput);
             }
 
 
-            return View("Create", personInput);
+            return View(personInput);
+
         }
     }
 }
