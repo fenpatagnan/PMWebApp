@@ -3,6 +3,7 @@ using PMWebApp.Models.InputModel;
 using PMWebApp.Models.OutputModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -47,10 +48,17 @@ namespace PMWebApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(string projectCode)
+        public ActionResult Edit(string id)
         {
+          
+            CreateOrUpdateProjectInputModel project = new CreateOrUpdateProjectInputModel();
+
             var projectService = new ProjectService();
-            return View();
+            project = projectService.GetProjectDetails(id);
+
+            Debug.WriteLine(project.projectName + "Proj Name");
+
+            return View(project);
         }
 
         public ActionResult Assign(string projectCode)

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using PMWebApp.Models.Entities;
 using PMWebApp.Models.InputModel;
+using System.Diagnostics;
 
 namespace PMWebApp.Facade
 {
@@ -54,7 +55,24 @@ namespace PMWebApp.Facade
             return db.Projects.Any(v => v.CodeValue == inputCode);
         }
 
+        public CreateOrUpdateProjectInputModel GetProjectDetails(string projectCode)
+        {
+            var projectDetails = db.Projects.Where( c => c.CodeValue == projectCode).FirstOrDefault();
 
-        
+            CreateOrUpdateProjectInputModel project = new CreateOrUpdateProjectInputModel();
+
+            if(projectDetails != null)
+            {
+                project.projectName = projectDetails.Name;
+                project.projectBudget = projectDetails.Budget;
+                project.projectRemarks = projectDetails.Remarks;
+                project.projectCode = projectDetails.CodeValue;
+            }
+
+            return project;
+        }
+
+
+
     }
 }

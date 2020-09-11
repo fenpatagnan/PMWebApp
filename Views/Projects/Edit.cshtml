@@ -17,17 +17,17 @@
                 </div>
                 <div class="form-group">
                     <label for="projectName"><strong>Project Name:</strong></label>
-                    <input type="text" name="projectName" class="form-control form-control-lg" id="projectName">
+                    <input type="text" name="projectName" class="form-control form-control-lg" id="projectName" value="@Model.projectName">
                     <small><strong>@Html.ValidationMessageFor(model => model.projectName, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
                 </div>
                 <div class="form-group">
                     <label for="projectBudget"><strong>Project Budget:</strong></label>
-                    <input type="text" name="projectBudget" class="form-control form-control-lg" id="projectBudget">
+                    <input type="text" name="projectBudget" class="form-control form-control-lg" id="projectBudget" value="@Model.projectBudget">
                     <small><strong>@Html.ValidationMessageFor(model => model.projectBudget, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
                 </div>
                 <div class="form-group">
                     <label for="projectRemarks"><strong>Remarks:</strong></label>
-                    <input type="text" name="projectRemarks" class="form-control form-control-lg" id="projectRemarks">
+                    <input type="text" name="projectRemarks" class="form-control form-control-lg" id="projectRemarks" value="@Model.projectRemarks">
                     <small><strong>@Html.ValidationMessageFor(model => model.projectRemarks, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
                 </div>
                 <button type="submit" class="btn btn-success float-lg-right font-weight-bold btn-lg">Submit</button>
