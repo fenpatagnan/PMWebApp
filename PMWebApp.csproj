@@ -155,20 +155,28 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009101354149_Project.cs" />
-    <Compile Include="Migrations\202009101354149_Project.designer.cs">
-      <DependentUpon>202009101354149_Project.cs</DependentUpon>
+    <Compile Include="Migrations\202009140936485_init.cs" />
+    <Compile Include="Migrations\202009140936485_init.designer.cs">
+      <DependentUpon>202009140936485_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CommandResult.cs" />
     <Compile Include="Models\Context\ProjectsDbContext.cs" />
+    <Compile Include="Models\CustomValidationModel\CommandResult.cs" />
     <Compile Include="Models\CustomValidationModel\UniqueProjectAttribute.cs" />
     <Compile Include="Models\CustomValidationModel\UniqueUsernameAttribute.cs" />
     <Compile Include="Models\Entities\Person.cs" />
+    <Compile Include="Models\Entities\PersonProject.cs" />
     <Compile Include="Models\Entities\Project.cs" />
+    <Compile Include="Models\InputModel\AddMemberToProjectInputModel.cs" />
     <Compile Include="Models\InputModel\CreateOrUpdatePersonInputModel.cs" />
     <Compile Include="Models\InputModel\CreateOrUpdateProjectInputModel.cs" />
     <Compile Include="Models\InputModel\SigninViewModel.cs" />
     <Compile Include="Models\OutputModel\AddOrUpdatePersonSuccessViewModel.cs" />
+    <Compile Include="Models\OutputModel\ProjectAssignmentViewModel.cs" />
+    <Compile Include="Models\OutputModel\ProjectDetailsOutputModel.cs" />
+    <Compile Include="Models\OutputModel\ProjectMembersViewModel.cs" />
+    <Compile Include="Models\OutputModel\ProjectNonMembersViewModel.cs" />
     <Compile Include="Models\OutputModel\ProjectsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -318,6 +326,8 @@
     <Content Include="Views\Persons\Create.cshtml" />
     <Content Include="Views\Persons\SuccessPage.cshtml" />
     <Content Include="Views\Projects\SuccessPage.cshtml" />
+    <Content Include="Views\Persons\View.cshtml" />
+    <Content Include="Views\Projects\Assignments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -335,8 +345,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009101354149_Project.resx">
-      <DependentUpon>202009101354149_Project.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009140936485_init.resx">
+      <DependentUpon>202009140936485_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

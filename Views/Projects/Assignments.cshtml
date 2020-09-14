@@ -1,0 +1,45 @@
+﻿@model PMWebApp.Models.OutputModel.ProjectAssignmentViewModel
+
+<div class="row">
+    <div class="col-12 mb-5 border-bottom p-3">
+        <span class="display-4 text-info">Project Assignment</span>
+        <a href="@Url.Action("Index", "Projects")" class="btn btn-dark btn-lg mr-3 float-right font-weight-bold shadow"><i class="fa fa-arrow-left"></i> Go Back</a>
+    </div>
+</div>
+
+<h2>@Model.ProjectDetails.ProjectName</h2>
+
+<div class="container">
+    <div class="col-6 mx-auto p-4 mb-5">
+        <form method="post" action="@Url.Action("Assigning")" class="col-12">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="projectId" class="form-control form-control-lg" id="projectId" value="@Model.ProjectDetails.ProjectId">
+           
+            <div class="form-group">
+                <select class="form-control" name="personId">
+                    @foreach (var item in Model.Members)
+                    {
+                        <option value="@Html.DisplayFor(modelItem => item.PersonId)"> @Html.DisplayFor(modelItem => item.FirstName)</option>
+                    }
+                </select>
+            </div>
+        <button type="submit" class="btn btn-success float-lg-right font-weight-bold btn-lg">Add</button>
+        </form>
+    </div>
+
+    <div class="col-6 mx-auto p-4 mb-5">
+        <table class="table shadow mb-5 text-center">
+
+            <tbody>
+                
+                @foreach (var item in Model.NonMembers)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</td>
+                    <td>Remove</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

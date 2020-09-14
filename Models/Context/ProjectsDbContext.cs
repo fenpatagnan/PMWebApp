@@ -11,5 +11,11 @@ namespace PMWebApp.Models.Context
     {
         public DbSet<Project> Projects { get; set; }
         public DbSet<Person> People { get; set; }
+        public DbSet<PersonProject> PersonProject { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

@@ -11,6 +11,15 @@ namespace PMWebApp.Controllers
 {
     public class SigninController : Controller
     {
+        private readonly AccessService accessService;
+
+        public SigninController() : this(null) { }
+
+        public SigninController(AccessService accessService)
+        {
+            this.accessService = accessService ?? new AccessService();
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -26,18 +35,16 @@ namespace PMWebApp.Controllers
         [HttpPost]
         public ActionResult Index(SigninViewModel loginCred)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                AccessService access = new AccessService();
-
-                if (access.GrantAccess(loginCred))
-                {
-                    return RedirectToAction("Index", "Projects");
-                }
+                return View(loginCred);
             }
-            
-            loginCred.isInvalid = true;
-            
+
+            if (accessService.GrantAccess(loginCred))
+            {
+                return RedirectToAction("Index", "Projects");
+            }
+
             return View(loginCred);
         }
 

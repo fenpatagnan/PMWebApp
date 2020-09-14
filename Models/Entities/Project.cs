@@ -30,7 +30,6 @@ namespace PMWebApp.Models.Entities
 
         public bool IsActive { get; set; }
 
-
-
+        public virtual ICollection<PersonProject> PersonProjects { get; set; }
     }
 }

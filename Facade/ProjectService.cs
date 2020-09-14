@@ -7,6 +7,7 @@ using System.Web;
 using PMWebApp.Models.Entities;
 using PMWebApp.Models.InputModel;
 using System.Diagnostics;
+using PMWebApp.Models;
 
 namespace PMWebApp.Facade
 {
@@ -55,22 +56,93 @@ namespace PMWebApp.Facade
             return db.Projects.Any(v => v.CodeValue == inputCode);
         }
 
-        public CreateOrUpdateProjectInputModel GetProjectDetails(string projectCode)
+        public ProjectDetailsOutputModel GetProjectDetails(string projectCode)
         {
             var projectDetails = db.Projects.Where( c => c.CodeValue == projectCode).FirstOrDefault();
 
-            CreateOrUpdateProjectInputModel project = new CreateOrUpdateProjectInputModel();
+            ProjectDetailsOutputModel project = new ProjectDetailsOutputModel();
 
             if(projectDetails != null)
             {
-                project.projectName = projectDetails.Name;
-                project.projectBudget = projectDetails.Budget;
-                project.projectRemarks = projectDetails.Remarks;
-                project.projectCode = projectDetails.CodeValue;
+                project.ProjectId = projectDetails.Id;
+                project.ProjectCode = projectDetails.CodeValue;
+                project.ProjectName = projectDetails.Name;
+                project.ProjectBudget = projectDetails.Budget;
+                project.ProjectRemarks = projectDetails.Remarks;
             }
 
             return project;
         }
+
+        public bool UpdateTheProject(CreateOrUpdateProjectInputModel projectInput)
+        {
+           
+            return true;
+        }
+
+
+        public List<ProjectNonMembersViewModel> GetUnassignedMembers(int projectId)
+        {
+            var unassignedMembers = db.People.SqlQuery("SELECT Id, Username, FirstName, Lastname, Password, DateCreated " +
+                                                       "FROM PersonProjects " +
+                                                       "RIGHT JOIN People ON PersonProjects.PersonId = People.Id " +
+                                                       "AND PersonProjects.ProjectId = {0} " +
+                                                       "WHERE PersonId IS NULL;", projectId).ToList<Person>();
+
+
+            List<ProjectNonMembersViewModel> nonMembers = new List<ProjectNonMembersViewModel>();
+
+            foreach (var unassignedMember in unassignedMembers)
+            {
+                nonMembers.Add(new ProjectNonMembersViewModel()
+                {
+                    PersonId = unassignedMember.Id,
+                    LastName = unassignedMember.LastName,
+                    FirstName = unassignedMember.FirstName
+                });
+            }
+
+            return nonMembers;
+        }
+
+        public List<ProjectMembersViewModel> GetAssignedMembers(int projectId)
+        {
+            var assignedMembers = db.People.SqlQuery("SELECT * " +
+                            "FROM PersonProjects " +
+                            "LEFT JOIN People ON PersonProjects.PersonId = People.Id " +
+                            "WHERE PersonProjects.ProjectId = 1;").ToList<Person>();
+
+            List<ProjectMembersViewModel> nonMembers = new List<ProjectMembersViewModel>();
+
+            foreach (var assignedMember in assignedMembers)
+            {
+                nonMembers.Add(new ProjectMembersViewModel()
+                {
+                    PersonId = assignedMember.Id,
+                    LastName = assignedMember.LastName,
+                    FirstName = assignedMember.FirstName
+                });
+            }
+
+            return nonMembers;
+        }
+
+        public bool AddMemberToProject(AddMemberToProjectInputModel inputs)
+        {
+          
+              db.PersonProject.Add( new PersonProject() {
+                   ProjectId = inputs.ProjectId,
+                   PersonId = inputs.PersonId,
+               
+              });
+
+              db.SaveChanges();
+
+              return true;
+
+      }
+
+       
 
 
 

@@ -3,13 +3,13 @@ $("#projectCode").keyup(function () {
 
     let charCount = $('#projectCode').val().length;
     
-if (charCount >= 5) {
-    runHTTPRequest()
-}
+    if (charCount >= 5) {
+        runHTTPRequest()
+    }
 })
     
 function runHTTPRequest() {
-    $.post('@Url.Action("IsProjectAvail", "Projects")',
+    $.post('/Projects/IsProjectAvail',
         {
             projectCode: $("#projectCode").val()
         },
@@ -20,5 +20,15 @@ function runHTTPRequest() {
                 $("#projectCodeAvailability").html("<small class=\"text-danger\"><strong>Project is not available.</strong></small>");
             }
         })
+}
+
+function initCreateProjectForm(el) {
+    if (!el) return;
+
+    var projectCode = $('#projectCode', el);
+
+    $(projectCode).keyup(function {
+
+    });
 }
     

@@ -1,8 +1,9 @@
-﻿@model PMWebApp.Models.InputModel.CreateOrUpdateProjectInputModel
+﻿@model PMWebApp.Models.OutputModel.ProjectDetailsOutputModel
 
 <div class="row">
     <div class="col-12 mb-5 border-bottom p-3">
         <span class="display-4 text-info">Edit Project</span>
+        <a href="@Url.Action("Index", "Projects")" class="btn btn-dark btn-lg mr-3 float-right font-weight-bold shadow"><i class="fa fa-arrow-left"></i> Go Back</a>
     </div>
 </div>
 
@@ -13,24 +14,24 @@
                 @Html.AntiForgeryToken()
                 <div class="form-group">
                     <label for="projectCode"><strong>Project Code:</strong></label>
-                    <input type="text" name="projectCode" class="form-control form-control-lg" id="projectCode" value="@Model.projectCode" disabled>
+                    <input type="text" name="projectCode" class="form-control form-control-lg" id="projectCode" value="@Model.ProjectCode" disabled>
                 </div>
                 <div class="form-group">
                     <label for="projectName"><strong>Project Name:</strong></label>
-                    <input type="text" name="projectName" class="form-control form-control-lg" id="projectName" value="@Model.projectName">
-                    <small><strong>@Html.ValidationMessageFor(model => model.projectName, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+                    <input type="text" name="projectName" class="form-control form-control-lg" id="projectName" value="@Model.ProjectCode">
+                    <small><strong>@Html.ValidationMessageFor(model => model.ProjectCode, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
                 </div>
                 <div class="form-group">
                     <label for="projectBudget"><strong>Project Budget:</strong></label>
-                    <input type="text" name="projectBudget" class="form-control form-control-lg" id="projectBudget" value="@Model.projectBudget">
-                    <small><strong>@Html.ValidationMessageFor(model => model.projectBudget, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+                    <input type="text" name="projectBudget" class="form-control form-control-lg" id="projectBudget" value="@Model.ProjectBudget">
+                    <small><strong>@Html.ValidationMessageFor(model => model.ProjectBudget, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
                 </div>
                 <div class="form-group">
                     <label for="projectRemarks"><strong>Remarks:</strong></label>
-                    <input type="text" name="projectRemarks" class="form-control form-control-lg" id="projectRemarks" value="@Model.projectRemarks">
-                    <small><strong>@Html.ValidationMessageFor(model => model.projectRemarks, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
+                    <input type="text" name="projectRemarks" class="form-control form-control-lg" id="projectRemarks" value="@Model.ProjectRemarks">
+                    <small><strong>@Html.ValidationMessageFor(model => model.ProjectRemarks, "", new { @class = "text-danger d-block form-control-feedback" })</strong></small>
                 </div>
-                <button type="submit" class="btn btn-success float-lg-right font-weight-bold btn-lg">Submit</button>
+                <button type="submit" class="btn btn-success float-lg-right font-weight-bold btn-lg" disabled>Save</button>
             </form>
         </div>
     </div>

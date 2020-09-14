@@ -27,5 +27,7 @@ namespace PMWebApp.Models.Entities
 
         public DateTime? DateCreated { get; set; }
 
+        public virtual ICollection<PersonProject> PersonProjects { get; set; }
+
     }
 }

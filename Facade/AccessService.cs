@@ -30,9 +30,6 @@ namespace PMWebApp.Facade
             }
                       
             return isPasswordValid;
-
         }
-
-
     }
 }

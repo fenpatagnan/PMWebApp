@@ -1,4 +1,6 @@
 ﻿using PMWebApp.Facade;
+using PMWebApp.Models;
+using PMWebApp.Models.Entities;
 using PMWebApp.Models.InputModel;
 using PMWebApp.Models.OutputModel;
 using System;
@@ -13,6 +15,7 @@ namespace PMWebApp.Controllers
     [Authorize]
     public class ProjectsController : Controller
     {
+        private ProjectService projectService = new ProjectService();
         // GET: Project
         public ActionResult Index()
         {
@@ -30,19 +33,21 @@ namespace PMWebApp.Controllers
         [HttpPost]
         public ActionResult Create(CreateOrUpdateProjectInputModel projectInput)
         {
-            if(ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var projectService = new ProjectService();
-                projectInput.isSuccess = projectService.CreateTheProject(projectInput);
-                return View("SuccessPage");
+                return View("Create", projectInput);
             }
 
-            return View("Create", projectInput);
+            var projectService = new ProjectService();
+            projectInput.isSuccess = projectService.CreateTheProject(projectInput);
+            return View("SuccessPage");
         }
 
-        [HttpPost]
         public JsonResult IsProjectAvail(string projectCode)
         {
+            // RESTful semantics
+            //   All queries: HTTP GET
+            //   All commands: HTTP POST
             var projectService = new ProjectService();
             return Json(projectService.IsProjectCodeDuplicate(projectCode), JsonRequestBehavior.AllowGet);
         }
@@ -50,20 +55,31 @@ namespace PMWebApp.Controllers
         [HttpGet]
         public ActionResult Edit(string id)
         {
-          
-            CreateOrUpdateProjectInputModel project = new CreateOrUpdateProjectInputModel();
-
             var projectService = new ProjectService();
-            project = projectService.GetProjectDetails(id);
-
-            Debug.WriteLine(project.projectName + "Proj Name");
-
+            ProjectDetailsOutputModel project = projectService.GetProjectDetails(id);
             return View(project);
         }
 
-        public ActionResult Assign(string projectCode)
+        [HttpGet]
+        public ActionResult Assignments(string id)
         {
-            return HttpNotFound();
+            ProjectAssignmentViewModel projAssignment = new ProjectAssignmentViewModel();
+
+            projAssignment.ProjectDetails = this.projectService.GetProjectDetails(id);
+
+            projAssignment.Members = this.projectService.GetAssignedMembers(projAssignment.ProjectDetails.ProjectId);
+
+            projAssignment.NonMembers = this.projectService.GetUnassignedMembers(projAssignment.ProjectDetails.ProjectId);
+
+            return View(projAssignment);
+        }
+
+        [HttpPost]
+        public ActionResult Assigning(AddMemberToProjectInputModel  personProjectInput)
+        {
+            bool x = this.projectService.AddMemberToProject(personProjectInput);
+
+            return Content(personProjectInput.PersonId.ToString() + " "+ personProjectInput.ProjectId.ToString());
         }
 
 
