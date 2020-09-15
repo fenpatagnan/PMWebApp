@@ -1,11 +1,10 @@
-﻿using PMWebApp.Facade;
-using PMWebApp.Models.InputModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using PMWebApp.Facade;
 
 namespace PMWebApp.Controllers
 {
@@ -33,7 +32,7 @@ namespace PMWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(SigninViewModel loginCred)
+        public ActionResult Index(SigninCommand loginCred)
         {
             if (!ModelState.IsValid)
             {

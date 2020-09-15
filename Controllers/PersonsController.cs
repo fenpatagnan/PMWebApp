@@ -21,7 +21,7 @@ namespace PMWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CreateOrUpdatePersonInputModel personInput)
+        public ActionResult Create(CreateOrUpdateProjectCommand personInput)
         {
             if (ModelState.IsValid)
             {

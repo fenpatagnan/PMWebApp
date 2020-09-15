@@ -7,6 +7,8 @@ namespace PMWebApp.Models.CustomValidationModel
 {
     public class CommandResult
     {
-      
+        public List<string> Errors { get; set; }
+
+        
     }
 }

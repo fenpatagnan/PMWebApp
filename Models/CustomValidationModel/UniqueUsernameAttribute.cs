@@ -1,10 +1,11 @@
-﻿using PMWebApp.Facade;
-using PMWebApp.Models.InputModel;
+﻿using PMWebApp.Models.InputModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using PMWebApp.Core.Facade;
+using PMWebApp.Core.Commands;
 
 namespace PMWebApp.Models.CustomValidationModel
 {
@@ -12,7 +13,7 @@ namespace PMWebApp.Models.CustomValidationModel
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            CreateOrUpdatePersonInputModel person = (CreateOrUpdatePersonInputModel)validationContext.ObjectInstance;
+            CreateOrUpdateProjectCommand person = (CreateOrUpdateProjectCommand)validationContext.ObjectInstance;
 
             PersonService personService = new PersonService();
            

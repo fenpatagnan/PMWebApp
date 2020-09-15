@@ -149,25 +149,13 @@
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\SigninController.cs" />
     <Compile Include="Controllers\SignoutController.cs" />
-    <Compile Include="Facade\AccessService.cs" />
-    <Compile Include="Facade\PersonService.cs" />
-    <Compile Include="Facade\ProjectService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009140936485_init.cs" />
-    <Compile Include="Migrations\202009140936485_init.designer.cs">
-      <DependentUpon>202009140936485_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CommandResult.cs" />
-    <Compile Include="Models\Context\ProjectsDbContext.cs" />
     <Compile Include="Models\CustomValidationModel\CommandResult.cs" />
     <Compile Include="Models\CustomValidationModel\UniqueProjectAttribute.cs" />
     <Compile Include="Models\CustomValidationModel\UniqueUsernameAttribute.cs" />
-    <Compile Include="Models\Entities\Person.cs" />
-    <Compile Include="Models\Entities\PersonProject.cs" />
-    <Compile Include="Models\Entities\Project.cs" />
     <Compile Include="Models\InputModel\AddMemberToProjectInputModel.cs" />
     <Compile Include="Models\InputModel\CreateOrUpdatePersonInputModel.cs" />
     <Compile Include="Models\InputModel\CreateOrUpdateProjectInputModel.cs" />
@@ -345,9 +333,10 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009140936485_init.resx">
-      <DependentUpon>202009140936485_init.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\PMWebApp.Core\PMWebApp.Core.csproj">
+      <Project>{d9d89532-a626-44a9-b568-a89311512fb9}</Project>
+      <Name>PMWebApp.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

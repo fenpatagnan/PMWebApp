@@ -1,14 +1,13 @@
-﻿using PMWebApp.Facade;
-using PMWebApp.Models;
-using PMWebApp.Models.Entities;
-using PMWebApp.Models.InputModel;
-using PMWebApp.Models.OutputModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PMWebApp.Core.Commands;
+using PMWebApp.Core.Facade;
+using PMWebApp.Core.Data;
+using PMWebApp.Core.ViewModels;
 
 namespace PMWebApp.Controllers
 {
@@ -26,12 +25,12 @@ namespace PMWebApp.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            CreateOrUpdateProjectInputModel project = new CreateOrUpdateProjectInputModel();
+            CreateOrUpdateProjectCommand project = new CreateOrUpdateProjectCommand();
             return View(project);
         }
 
         [HttpPost]
-        public ActionResult Create(CreateOrUpdateProjectInputModel projectInput)
+        public ActionResult Create(CreateOrUpdateProjectCommand projectInput)
         {
             if (!ModelState.IsValid)
             {
@@ -56,30 +55,28 @@ namespace PMWebApp.Controllers
         public ActionResult Edit(string id)
         {
             var projectService = new ProjectService();
-            ProjectDetailsOutputModel project = projectService.GetProjectDetails(id);
+            ProjectDetailData project = projectService.GetProjectDetails(id);
             return View(project);
         }
 
         [HttpGet]
         public ActionResult Assignments(string id)
         {
-            ProjectAssignmentViewModel projAssignment = new ProjectAssignmentViewModel();
+            
+            // always prefer CHUNKY interfaces than CHATTY ones.
+            var projAssigment = new ProjectAssignmentViewModel().Initialize(this.projectService);
 
-            projAssignment.ProjectDetails = this.projectService.GetProjectDetails(id);
-
-            projAssignment.Members = this.projectService.GetAssignedMembers(projAssignment.ProjectDetails.ProjectId);
-
-            projAssignment.NonMembers = this.projectService.GetUnassignedMembers(projAssignment.ProjectDetails.ProjectId);
-
-            return View(projAssignment);
+            return View(projAssigment);
         }
 
         [HttpPost]
-        public ActionResult Assigning(AddMemberToProjectInputModel  personProjectInput)
+        public ActionResult Assigning(AddMemberInProjectCommand  personProjectInput)
         {
-            bool x = this.projectService.AddMemberToProject(personProjectInput);
+            if (!ModelState.IsValid) return Content("error");
+           
+            bool isAdded = this.projectService.AddMemberToProject(personProjectInput);
 
-            return Content(personProjectInput.PersonId.ToString() + " "+ personProjectInput.ProjectId.ToString());
+            return Content(personProjectInput.PersonId.ToString() + " "+ personProjectInput.ProjectId.ToString() + isAdded.ToString());
         }
 
 

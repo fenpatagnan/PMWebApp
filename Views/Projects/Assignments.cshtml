@@ -17,7 +17,7 @@
            
             <div class="form-group">
                 <select class="form-control" name="personId">
-                    @foreach (var item in Model.Members)
+                    @foreach (var item in Model.NonMembers)
                     {
                         <option value="@Html.DisplayFor(modelItem => item.PersonId)"> @Html.DisplayFor(modelItem => item.FirstName)</option>
                     }
@@ -32,7 +32,7 @@
 
             <tbody>
                 
-                @foreach (var item in Model.NonMembers)
+                @foreach (var item in Model.Members)
                 {
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</td>
