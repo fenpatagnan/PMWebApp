@@ -1,13 +1,18 @@
 ﻿@model PMWebApp.Core.Data.CommandResult
 
 
-   @if(Model.Errors.Any())
-   {
-       foreach(string error in Model.Errors)
-       {
-           <p class="alert alert-danger"><strong>@error</strong></p>
-       }
-   } else
-   {
-       <p class="alert alert-success"><strong>Member has been added.</strong></p>
-   }
+@if (Model.Errors.Any())
+{
+    foreach (string error in Model.Errors)
+    {
+        <p class="alert alert-danger"><strong>@error</strong></p>
+    }
+}
+
+@if (Model.SuccessResponse.Any())
+{
+    foreach (string success in Model.SuccessResponse)
+    {
+        <p class="alert alert-info"><strong>@success</strong></p>
+    }
+}

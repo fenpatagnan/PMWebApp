@@ -45,9 +45,6 @@ namespace PMWebApp.Controllers
 
         public JsonResult IsProjectAvail(string projectCode)
         {
-            // RESTful semantics
-            //   All queries: HTTP GET
-            //   All commands: HTTP POST
             var projectService = new ProjectService();
             return Json(projectService.IsProjectCodeDuplicate(projectCode), JsonRequestBehavior.AllowGet);
         }
@@ -63,36 +60,49 @@ namespace PMWebApp.Controllers
         [HttpGet]
         public ActionResult Assignments(string id)
         {
-
-            var projAssignment = new ProjectAssignmentViewModel().Initialize(this.projectService, this.personService, id);
-
-            return View(projAssignment);
+            if (string.IsNullOrEmpty(id)) return HttpNotFound();
+            ProjectDetailData projectDetails = this.projectService.GetProjectDetails(id);
+            return View(projectDetails);
         }
 
         [HttpPost]
         public ActionResult Assign(AddMemberInProjectCommand  personProjectInput)
         {
-            CommandResult isAdded = new CommandResult();
+            CommandResult result = new CommandResult();
 
-            if (!ModelState.IsValid) isAdded.Errors.Add("Project Id or Person must have a value.");
-           
-            isAdded = this.projectService.AddMemberToProject(personProjectInput);
-
-            return PartialView("~/Views/Projects/Partials/_ProjectAssignmentResponse.cshtml", isAdded);
-
+            if (!ModelState.IsValid) {
+                result.Errors.Add("You must select a member to add.");
+            } else
+            {
+                result = this.projectService.AddMemberToProject(personProjectInput);
+            }
+            return PartialView("~/Views/Projects/Partials/_ProjectAssignmentResponse.cshtml", result);
         }
 
         [HttpPost]
         public ActionResult Remove(RemoveMemberInProjectCommand personProjectInput)
         {
-            CommandResult isRemove = new CommandResult();
+            CommandResult result = new CommandResult();
 
-            if (!ModelState.IsValid) isRemove.Errors.Add("Project Id or Person must have a value.");
-          
-            isRemove = this.projectService.RemoveMemberToProject(personProjectInput);
+            if (!ModelState.IsValid)
+            {
+                result.Errors.Add("You must select a member to remove.");
+            }
+            else
+            {
+                result = this.projectService.RemoveMemberToProject(personProjectInput);
+            }
+           
+            return PartialView("~/Views/Projects/Partials/_ProjectAssignmentResponse.cshtml", result);
 
-            return PartialView("~/Views/Projects/Partials/_ProjectAssignmentResponse.cshtml", isRemove);
+        }
 
+        [HttpGet]
+
+        public ActionResult GetProjectAssignmentDetails(string id)
+        {
+            var projAssignment = new ProjectAssignmentViewModel().Initialize(this.projectService, this.personService, id);
+            return PartialView("~/Views/Projects/Partials/_ProjectAssignments.cshtml", projAssignment);
         }
 
 
