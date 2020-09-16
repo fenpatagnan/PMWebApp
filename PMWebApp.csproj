@@ -152,20 +152,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CommandResult.cs" />
-    <Compile Include="Models\CustomValidationModel\CommandResult.cs" />
-    <Compile Include="Models\CustomValidationModel\UniqueProjectAttribute.cs" />
-    <Compile Include="Models\CustomValidationModel\UniqueUsernameAttribute.cs" />
-    <Compile Include="Models\InputModel\AddMemberToProjectInputModel.cs" />
-    <Compile Include="Models\InputModel\CreateOrUpdatePersonInputModel.cs" />
-    <Compile Include="Models\InputModel\CreateOrUpdateProjectInputModel.cs" />
-    <Compile Include="Models\InputModel\SigninViewModel.cs" />
-    <Compile Include="Models\OutputModel\AddOrUpdatePersonSuccessViewModel.cs" />
-    <Compile Include="Models\OutputModel\ProjectAssignmentViewModel.cs" />
-    <Compile Include="Models\OutputModel\ProjectDetailsOutputModel.cs" />
-    <Compile Include="Models\OutputModel\ProjectMembersViewModel.cs" />
-    <Compile Include="Models\OutputModel\ProjectNonMembersViewModel.cs" />
-    <Compile Include="Models\OutputModel\ProjectsViewModel.cs" />
+    <Compile Include="Models\CustomValidations\UniqueProjectAttribute.cs" />
+    <Compile Include="Models\CustomValidations\UniqueUsernameAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,10 @@
-﻿using PMWebApp.Facade;
-using PMWebApp.Models.InputModel;
-using PMWebApp.Models.OutputModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PMWebApp.Core.Facade;
+using PMWebApp.Core.Commands;
 
 namespace PMWebApp.Controllers
 {
@@ -16,12 +15,12 @@ namespace PMWebApp.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            CreateOrUpdatePersonInputModel personInput = new CreateOrUpdatePersonInputModel();
+            CreateOrUpdatePersonCommand personInput = new CreateOrUpdatePersonCommand();
             return View(personInput);
         }
 
         [HttpPost]
-        public ActionResult Create(CreateOrUpdateProjectCommand personInput)
+        public ActionResult Create(CreateOrUpdatePersonCommand personInput)
         {
             if (ModelState.IsValid)
             {

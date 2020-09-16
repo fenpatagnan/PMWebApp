@@ -1,19 +1,15 @@
-﻿using PMWebApp.Models.InputModel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 using PMWebApp.Core.Facade;
 using PMWebApp.Core.Commands;
 
-namespace PMWebApp.Models.CustomValidationModel
+
+namespace PMWebApp.Models.CustomValidations
 {
     public class UniqueUsernameAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            CreateOrUpdateProjectCommand person = (CreateOrUpdateProjectCommand)validationContext.ObjectInstance;
+            CreateOrUpdatePersonCommand person = (CreateOrUpdatePersonCommand)validationContext.ObjectInstance;
 
             PersonService personService = new PersonService();
            

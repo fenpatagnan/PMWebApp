@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using PMWebApp.Core.Facade;
+﻿using PMWebApp.Core.Facade;
 using PMWebApp.Core.Commands;
+using System.ComponentModel.DataAnnotations;
 
 
-namespace PMWebApp.Models.CustomValidationModel
+namespace PMWebApp.Models.CustomValidations
 {
     public class UniqueProjectAttribute : ValidationAttribute
     {

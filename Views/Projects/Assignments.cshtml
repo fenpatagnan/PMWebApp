@@ -1,5 +1,4 @@
-﻿@model PMWebApp.Models.OutputModel.ProjectAssignmentViewModel
-
+﻿@model PMWebApp.Core.ViewModels.ProjectAssignmentViewModel
 <div class="row">
     <div class="col-12 mb-5 border-bottom p-3">
         <span class="display-4 text-info">Project Assignment</span>
@@ -9,21 +8,26 @@
 
 <h2>@Model.ProjectDetails.ProjectName</h2>
 
+
 <div class="container">
     <div class="col-6 mx-auto p-4 mb-5">
         <form method="post" action="@Url.Action("Assigning")" class="col-12">
             @Html.AntiForgeryToken()
             <input type="hidden" name="projectId" class="form-control form-control-lg" id="projectId" value="@Model.ProjectDetails.ProjectId">
-           
+
             <div class="form-group">
                 <select class="form-control" name="personId">
-                    @foreach (var item in Model.NonMembers)
+                    @if (Model.NonMembers != null && Model.NonMembers.Count() != 0)
                     {
-                        <option value="@Html.DisplayFor(modelItem => item.PersonId)"> @Html.DisplayFor(modelItem => item.FirstName)</option>
+                        foreach (var item in Model.NonMembers)
+                        {
+                            <option value="@Html.DisplayFor(modelItem => item.PersonId)"> @Html.DisplayFor(modelItem => item.DisplayName)</option>
+                        }
                     }
+
                 </select>
             </div>
-        <button type="submit" class="btn btn-success float-lg-right font-weight-bold btn-lg">Add</button>
+            <button type="submit" class="btn btn-success float-lg-right font-weight-bold btn-lg">Add</button>
         </form>
     </div>
 
@@ -31,15 +35,20 @@
         <table class="table shadow mb-5 text-center">
 
             <tbody>
-                
-                @foreach (var item in Model.Members)
+
+                @foreach (var item in Model.ProjectDetails.Members)
                 {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</td>
-                    <td>Remove</td>
-                </tr>
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.DisplayName)</td>
+                        <td>Remove</td>
+                    </tr>
                 }
             </tbody>
         </table>
     </div>
 </div>
+
+
+@section scripts {
+   
+}

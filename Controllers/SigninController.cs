@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using PMWebApp.Facade;
+using PMWebApp.Core.Facade;
+using PMWebApp.Core.Commands;
 
 namespace PMWebApp.Controllers
 {
@@ -27,7 +28,7 @@ namespace PMWebApp.Controllers
                 return RedirectToAction("Index", "Projects");
             }
 
-            SigninViewModel loginCred = new SigninViewModel();
+            SigninCommand loginCred = new SigninCommand();
             return View(loginCred);
         }
 

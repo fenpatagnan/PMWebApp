@@ -15,6 +15,7 @@ namespace PMWebApp.Controllers
     public class ProjectsController : Controller
     {
         private ProjectService projectService = new ProjectService();
+        private PersonService personService = new PersonService();
         // GET: Project
         public ActionResult Index()
         {
@@ -62,11 +63,11 @@ namespace PMWebApp.Controllers
         [HttpGet]
         public ActionResult Assignments(string id)
         {
-            
-            // always prefer CHUNKY interfaces than CHATTY ones.
-            var projAssigment = new ProjectAssignmentViewModel().Initialize(this.projectService);
 
-            return View(projAssigment);
+            // always prefer CHUNKY interfaces than CHATTY ones.
+            var projAssignment = new ProjectAssignmentViewModel().Initialize(this.projectService, this.personService, id);
+
+            return View(projAssignment);
         }
 
         [HttpPost]
@@ -74,9 +75,9 @@ namespace PMWebApp.Controllers
         {
             if (!ModelState.IsValid) return Content("error");
            
-            bool isAdded = this.projectService.AddMemberToProject(personProjectInput);
+            CommandResult isAdded = this.projectService.AddMemberToProject(personProjectInput);
 
-            return Content(personProjectInput.PersonId.ToString() + " "+ personProjectInput.ProjectId.ToString() + isAdded.ToString());
+            return Content(personProjectInput.PersonId.ToString() + " " + personProjectInput.ProjectId.ToString() + isAdded.ToString());
         }
 
 
