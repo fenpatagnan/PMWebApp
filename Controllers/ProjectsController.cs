@@ -64,20 +64,35 @@ namespace PMWebApp.Controllers
         public ActionResult Assignments(string id)
         {
 
-            // always prefer CHUNKY interfaces than CHATTY ones.
             var projAssignment = new ProjectAssignmentViewModel().Initialize(this.projectService, this.personService, id);
 
             return View(projAssignment);
         }
 
         [HttpPost]
-        public ActionResult Assigning(AddMemberInProjectCommand  personProjectInput)
+        public ActionResult Assign(AddMemberInProjectCommand  personProjectInput)
         {
-            if (!ModelState.IsValid) return Content("error");
-           
-            CommandResult isAdded = this.projectService.AddMemberToProject(personProjectInput);
+            CommandResult isAdded = new CommandResult();
 
-            return Content(personProjectInput.PersonId.ToString() + " " + personProjectInput.ProjectId.ToString() + isAdded.ToString());
+            if (!ModelState.IsValid) isAdded.Errors.Add("Project Id or Person must have a value.");
+           
+            isAdded = this.projectService.AddMemberToProject(personProjectInput);
+
+            return PartialView("~/Views/Projects/Partials/_ProjectAssignmentResponse.cshtml", isAdded);
+
+        }
+
+        [HttpPost]
+        public ActionResult Remove(RemoveMemberInProjectCommand personProjectInput)
+        {
+            CommandResult isRemove = new CommandResult();
+
+            if (!ModelState.IsValid) isRemove.Errors.Add("Project Id or Person must have a value.");
+          
+            isRemove = this.projectService.RemoveMemberToProject(personProjectInput);
+
+            return PartialView("~/Views/Projects/Partials/_ProjectAssignmentResponse.cshtml", isRemove);
+
         }
 
 
